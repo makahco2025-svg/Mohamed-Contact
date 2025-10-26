@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اسم الشركة العالمية</title>
+    
+    <!-- أيقونة الموقع (Favicon) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://placehold.co/32x32/ffffff/000000?text=L">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://placehold.co/16x16/ffffff/000000?text=L">
+
+    <!-- إضافة مكتبة Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- خط عصري وواضح (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- متغيرات التصميم الزجاجي --- */
+        :root {
+            --primary-color: #ffffff;
+            --accent-color: #4facfe;
+            --text-muted: #e0e0e0;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- إعدادات عامة --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--primary-color);
+            min-height: 100vh;
+            /* إضافة مساحة أعلى الصفحة لمنع الهيدر من تغطية المحتوى */
+            padding-top: 80px; 
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+
+        /* === تصميم الهيدر الثابت (على طراز فيسبوك) === */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px; /* ارتفاع الهيدر */
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            z-index: 1000; /* لضمان بقائه في الأعلى */
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .header-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 12px;
+            border: 2px solid var(--primary-color);
+        }
+
+        .header-nav .social-buttons {
+            display: flex;
+            gap: 10px; /* مسافة بين الأيقونات في الهيدر */
+        }
+
+        .header-nav .social-buttons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .header-nav .social-buttons a:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        /* --- الحاوية الرئيسية (بطاقة الزجاج) --- */
+        .glass-card {
+            width: 100%;
+            max-width: 650px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 50px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            text-align: center;
+            position: relative;
+            margin: 50px auto; /* توسيط البطاقة */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .glass-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === تصميم الشعار الجذاب === */
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            padding: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+
+        .name-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .name-section p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* --- قسم البيانات --- */
+        .contact-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .contact-list li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .contact-list li i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .contact-list a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .contact-list a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- قسم الدفع --- */
+        .payment-section h3 {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .qr-codes-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .qr-code-box img {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            padding: 5px;
+            background-color: #fff;
+        }
+
+        .qr-code-box p {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- توقيع المصمم --- */
+        .design-credit {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .design-credit a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .design-credit a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- تجاوب مع الشاشات الصغيرة --- */
+        @media (max-width: 768px) {
+            .main-header { padding: 0 20px; }
+            .header-logo { font-size: 1.2rem; }
+            .header-logo img { width: 35px; height: 35px; }
+            .glass-card { 
+                padding: 40px 30px; 
+                margin: 20px auto;
+            }
+            .name-section h1 { font-size: 2.5rem; }
+            .qr-codes-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- === الهيدر الثابت في الأعلى === -->
+    <header class="main-header">
+        <div class="header-logo">
+            <img src="https://placehold.co/40x40/ffffff/000000?text=L" alt="شعار الشركة">
+            اسم الشركة
+        </div>
+        <nav class="header-nav">
+            <div class="social-buttons">
+                <a href="https://linkedin.com/company/your-profile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://twitter.com/your-profile" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://facebook.com/your-profile" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/your-profile" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- === الحاوية الرئيسية (البطاقة) === -->
+    <main class="glass-card" id="mainCard">
+        
+        <!-- === قسم الاسم والشعار === -->
+        <header class="name-section">
+            <div class="logo-container">
+                <img src="https://placehold.co/120x120/ffffff/000000?text=LOGO" alt="شعار الشركة العالمية">
+            </div>
+            <h1>اسم الشركة العالمية</h1>
+            <p>الريادة والابتكار في كل خطوة</p>
+        </header>
+
+        <!-- === قسم البيانات === -->
+        <section class="contact-section">
+            <ul class="contact-list">
+                <li><i class="fas fa-phone"></i> <a href="tel:+78945612320">+789 456 123 20+</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:contact@globalcorp.com">contact@globalcorp.com</a></li>
+                <li><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/search/?api=1&query=العنوان، شارع الأعمال، دبي، الإمارات" target="_blank">العنوان، شارع الأعمال، دبي، الإمارات</a></li>
+            </ul>
+        </section>
+        
+        <!-- === قسم الدفع === -->
+        <section class="payment-section">
+            <h3>طرق الدفع</h3>
+            <div class="qr-codes-wrapper">
+                <div class="qr-code-box">
+                    <img src="https://placehold.co/120x120/ffffff/000000?text=Instapay" alt="Instapay QR Code">
+                    <p>Instapay</p>
+                </div>
+                <div class="qr-code-box">
+                    <img src="https://placehold.co/120x120/ffffff/000000?text=Vodafone" alt="Vodafone Cash QR Code">
+                    <p>Vodafone Cash</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- === توقيع المصمم === -->
+        <footer class="design-credit">
+            <p>© 2024 Global Corp. | Designed by <a href="https://your-website.com" target="_blank">Your Agency</a></p>
+        </footer>
+
+    </main>
+
+    <!-- === كود JavaScript للحركة التفاعلية === -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const card = document.getElementById('mainCard');
+            setTimeout(() => {
+                card.classList.add('is-visible');
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>

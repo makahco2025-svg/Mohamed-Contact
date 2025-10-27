@@ -11,17 +11,18 @@
 
     <!-- إضافة مكتبة Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- خط عصري وواضح (Tajawal) -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- خط عصري وجريء (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* --- متغيرات التصميم الزجاجي --- */
+        /* --- متغيرات التصميم ثلاثي الأبعاد --- */
         :root {
-            --primary-color: #ffffff;
-            --accent-color: #4facfe;
-            --text-muted: #e0e0e0;
-            --glass-bg: rgba(255, 255, 255, 0.15);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --bg-color: #2D3561; /* لون الخلفية الداكن الناعم */
+            --card-color: #3C4266; /* لون البطاقة (أفتح قليلاً من الخلفية) */
+            --text-color: #EAEAEA; /* لون النص الفاتح */
+            --accent-color: #64D2FF; /* لون مميز زاهٍ */
+            --shadow-light: rgba(255, 255, 255, 0.1); /* الظل الخفيف (للأعلى) */
+            --shadow-dark: rgba(0, 0, 0, 0.3); /* الظل الداكن (للأسفل) */
         }
 
         /* --- إعدادات عامة --- */
@@ -32,224 +33,181 @@
         }
 
         body {
-            font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            color: var(--primary-color);
+            font-family: 'Poppins', 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             min-height: 100vh;
-            /* إضافة مساحة أعلى الصفحة لمنع الهيدر من تغطية المحتوى */
-            padding-top: 80px; 
-            line-height: 1.6;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-        }
-
-        /* === تصميم الهيدر الثابت (على طراز فيسبوك) === */
-        .main-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px; /* ارتفاع الهيدر */
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-            z-index: 1000; /* لضمان بقائه في الأعلى */
-        }
-
-        .header-logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
-
-        .header-logo img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-left: 12px;
-            border: 2px solid var(--primary-color);
-        }
-
-        .header-nav .social-buttons {
-            display: flex;
-            gap: 10px; /* مسافة بين الأيقونات في الهيدر */
-        }
-
-        .header-nav .social-buttons a {
-            display: flex;
-            align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 50%;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s ease-in-out;
+            align-items: center;
+            padding: 20px;
         }
 
-        .header-nav .social-buttons a:hover {
-            background: var(--accent-color);
-            color: var(--primary-color);
-            transform: scale(1.1);
-        }
-
-        /* --- الحاوية الرئيسية (بطاقة الزجاج) --- */
-        .glass-card {
+        /* --- البطاقة الرئيسية بتأثير Neumorphism --- */
+        .neumorphic-card {
             width: 100%;
-            max-width: 650px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            padding: 50px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            max-width: 500px;
+            background-color: var(--card-color);
+            padding: 60px 40px;
+            border-radius: 25px;
+            box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
             text-align: center;
             position: relative;
-            margin: 50px auto; /* توسيط البطاقة */
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        .glass-card.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* === تصميم الشعار الجذاب === */
+        /* --- الشعار --- */
         .logo-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 30px;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px auto;
+            background-color: var(--card-color);
+            border-radius: 50%;
+            box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .logo-container img {
-            width: 120px;
-            height: 120px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
-            border: 3px solid var(--primary-color);
-            padding: 4px;
-            background-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            object-fit: cover;
         }
 
-        .logo-container img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-        }
-
-        .name-section h1 {
-            font-size: 3rem;
+        /* --- الاسم والعنوان --- */
+        .neumorphic-card h1 {
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 8px;
+            background: linear-gradient(45deg, var(--accent-color), #a29bfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .name-section p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            font-weight: 500;
+        .neumorphic-card p {
+            font-size: 1rem;
+            color: var(--text-color);
+            opacity: 0.8;
         }
 
-        /* --- قسم البيانات --- */
+        /* --- قائمة المعلومات (أزرار neumorphic) --- */
         .contact-list {
             list-style: none;
-            margin-bottom: 30px;
+            margin: 40px 0;
         }
 
         .contact-list li {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            margin-bottom: 20px;
         }
 
-        .contact-list li i {
+        .neumorphic-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 18px 25px;
+            background-color: var(--card-color);
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .neumorphic-button:hover {
+            box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+        }
+
+        .neumorphic-button i {
             color: var(--accent-color);
+            margin-left: 15px;
             font-size: 1.2rem;
         }
 
-        .contact-list a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color 0.2s ease-in-out;
+        /* === قسم الروابط الاجتماعية (تصميم دائري) === */
+        .social-section {
+            margin: 30px 0;
         }
 
-        .contact-list a:hover {
-            color: var(--accent-color);
+        .social-links-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .neumorphic-button--social {
+            width: 50px;
+            height: 50px;
+            padding: 0; /* إزالة الحشو للأزرار الدائرية */
+            border-radius: 50%; /* جعلها دائرية */
+            font-size: 1.2rem; /* حجم الأيقونة */
         }
 
         /* --- قسم الدفع --- */
+        .payment-section {
+            margin-top: 30px;
+        }
+
         .payment-section h3 {
-            font-size: 1rem;
-            color: var(--text-muted);
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.7;
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-weight: 600;
         }
 
         .qr-codes-wrapper {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
         }
 
-        .qr-code-box img {
-            width: 120px;
-            height: 120px;
+        .qr-box {
+            background-color: var(--card-color);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        .qr-box img {
+            width: 100px;
+            height: 100px;
             border-radius: 10px;
-            border: 1px solid var(--glass-border);
-            padding: 5px;
             background-color: #fff;
+            padding: 5px;
         }
 
-        .qr-code-box p {
-            margin-top: 8px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
+        .qr-box p {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--text-color);
+            font-weight: 600;
         }
 
         /* --- توقيع المصمم --- */
         .design-credit {
-            margin-top: 30px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            margin-top: 40px;
+            font-size: 0.75rem;
+            color: var(--text-color);
+            opacity: 0.6;
         }
 
         .design-credit a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .design-credit a:hover {
             color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
         }
 
         /* --- تجاوب مع الشاشات الصغيرة --- */
-        @media (max-width: 768px) {
-            .main-header { padding: 0 20px; }
-            .header-logo { font-size: 1.2rem; }
-            .header-logo img { width: 35px; height: 35px; }
-            .glass-card { 
-                padding: 40px 30px; 
-                margin: 20px auto;
-            }
-            .name-section h1 { font-size: 2.5rem; }
+        @media (max-width: 600px) {
+            .neumorphic-card { padding: 50px 30px; }
+            .neumorphic-card h1 { font-size: 2rem; }
             .qr-codes-wrapper {
                 flex-direction: column;
                 align-items: center;
@@ -260,53 +218,67 @@
 </head>
 <body>
 
-    <!-- === الهيدر الثابت في الأعلى === -->
-    <header class="main-header">
-        <div class="header-logo">
-            <img src="https://www2.0zz0.com/2025/10/26/20/127109061.png" alt="شعار الشركة">
-            اسم الشركة
-        </div>
-        <nav class="header-nav">
-            <div class="social-buttons">
-                <a href="https://www.linkedin.com/in/%D9%85%D8%AD%D9%85%D8%AF-%D8%A7%D8%AD%D9%85%D8%AF-90ba85241/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://x.com/2m2009" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.facebook.com/mhmd.abw.ywsf.312557" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/mohamed_ahmed_abo_yossef/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- === الحاوية الرئيسية (البطاقة) === -->
-    <main class="glass-card" id="mainCard">
+    <main class="neumorphic-card">
         
-        <!-- === قسم الاسم والشعار === -->
-        <header class="name-section">
-            <div class="logo-container">
-                <img src="https://www2.0zz0.com/2025/10/26/20/127109061.png" alt="شعار الشركة العالمية">
-            </div>
-            <h1>كيان</h1>
-            <p>للدعاية والإعلان</p>
-        </header>
+        <!-- === الشعار === -->
+        <div class="logo-container">
+            <img src="https://www2.0zz0.com/2025/10/26/20/127109061.png" alt="شعار الشركة">
+        </div>
 
-        <!-- === قسم البيانات === -->
-        <section class="contact-section">
-            <ul class="contact-list">
-                <li><i class="fas fa-phone"></i> <a href="tel:+201030566078">+01030566078</a></li>
-                <li><i class="fas fa-envelope"></i> <a href="kian.adv.2025@gmail.com">kian.adv.2025@gmail.com</a></li>
-                <li><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/search/?api=1&query=العنوان، شبرا الخيمة" target="_blank">العنوان، شبرا الخيمة</a></li>
-            </ul>
+        <!-- === الاسم والعنوان === -->
+        <h1>كيان</h1>
+        <p>للدعاية والإعلان</p>
+
+        <!-- === قائمة المعلومات === -->
+        <ul class="contact-list">
+            <li>
+                <a href="tel:201030566078+" class="neumorphic-button">
+                    <span>201030566078+</span>
+                    <i class="fas fa-phone"></i>
+                </a>
+            </li>
+            <li>
+                <a href="kian.adv.2025@gmail.com" class="neumorphic-button">
+                    <span>kian.adv.2025@gmail.com</span>
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.google.com/maps/search/?api=1&query=العنوان، شبرا الخيمة" target="_blank" class="neumorphic-button">
+                    <span>العنوان، شبرا الخيمة</span>
+                    <i class="fas fa-map-marker-alt"></i>
+                </a>
+            </li>
+        </ul>
+
+        <!-- === قسم الروابط الاجتماعية الجديد === -->
+        <section class="social-section">
+            <div class="social-links-wrapper">
+                <a href="https://www.linkedin.com/in/%D9%85%D8%AD%D9%85%D8%AF-%D8%A7%D8%AD%D9%85%D8%AF-90ba85241/" target="_blank" class="neumorphic-button neumorphic-button--social" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://x.com/2m2009" target="_blank" class="neumorphic-button neumorphic-button--social" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.facebook.com/mhmd.abw.ywsf.312557" target="_blank" class="neumorphic-button neumorphic-button--social" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/mohamed_ahmed_abo_yossef/" target="_blank" class="neumorphic-button neumorphic-button--social" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
         </section>
         
         <!-- === قسم الدفع === -->
         <section class="payment-section">
             <h3>طرق الدفع</h3>
             <div class="qr-codes-wrapper">
-                <div class="qr-code-box">
-                    <img src="https://placehold.co/120x120/ffffff/000000?text=Instapay" alt="Instapay QR Code">
+                <div class="qr-box">
+                    <img src="https://www2.0zz0.com/2025/10/27/01/770802903.jpg" alt="Instapay QR Code">
                     <p>Instapay</p>
                 </div>
-                <div class="qr-code-box">
-                    <img src="https://placehold.co/120x120/ffffff/000000?text=Vodafone" alt="Vodafone Cash QR Code">
+                <div class="qr-box">
+                    <img src="https://www2.0zz0.com/2025/10/27/01/185014759.jpg" alt="Vodafone Cash QR Code">
                     <p>Vodafone Cash</p>
                 </div>
             </div>
@@ -314,21 +286,10 @@
 
         <!-- === توقيع المصمم === -->
         <footer class="design-credit">
-            <p>© 2024 Global Corp. | Designed by <a href="https://your-website.com" target="_blank">KYAIN For Advertising</a></p>
+            <p>© 2025 Global Corp. | Designed by <a href="https://your-website.com" target="_blank">KYAIN For Advertising</a></p>
         </footer>
 
     </main>
 
-    <!-- === كود JavaScript للحركة التفاعلية === -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const card = document.getElementById('mainCard');
-            setTimeout(() => {
-                card.classList.add('is-visible');
-            }, 100);
-        });
-    </script>
-
 </body>
-
 </html>
